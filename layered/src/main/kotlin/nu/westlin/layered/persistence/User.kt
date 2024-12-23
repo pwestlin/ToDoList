@@ -11,4 +11,6 @@ data class User(
     init {
         require(email.isNotBlank()) { "Email cannot be blank" }
     }
+
+    companion object
 }
