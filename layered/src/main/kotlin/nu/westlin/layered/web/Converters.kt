@@ -27,7 +27,6 @@ fun Set<PersistenceToDoListItem>.toPresentation(): Set<WebToDoListItem> =
         )
     }.toSet()
 
-// TODO pwestlin: Move and test
 fun CreateToDoList.toPersistence(): PersistenceToDoList =
     PersistenceToDoList(
         name = this.name,
@@ -36,7 +35,6 @@ fun CreateToDoList.toPersistence(): PersistenceToDoList =
         reminder = this.reminder,
     )
 
-// TODO pwestlin: Move and test
 fun Set<WebToDoListItem>.toPersistence(): Set<PersistenceToDoListItem> =
     this.map { persistenceToDoListItem ->
         PersistenceToDoListItem(
