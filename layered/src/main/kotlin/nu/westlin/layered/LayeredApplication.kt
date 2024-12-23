@@ -1,6 +1,5 @@
 package nu.westlin.layered
 
-import nu.westlin.layered.persistence.Id
 import nu.westlin.layered.persistence.ToDoList
 import nu.westlin.layered.persistence.ToDoListItem
 import nu.westlin.layered.persistence.ToDoListRepository
@@ -28,27 +27,27 @@ class InitData(
     override fun run(args: ApplicationArguments?) {
         // TODO pwestlin: Use domain service and not repo for saving
 
-        val userFoo = userRepository.save(User(id = Id(value = 0), email = "foo@foo.com"))
-        val userBar = userRepository.save(User(id = Id(value = 0), email = "bar@bar.com"))
+        val userFoo = userRepository.save(User(id = 0, email = "foo@foo.com"))
+        val userBar = userRepository.save(User(id = 0, email = "bar@bar.com"))
 
         listOf(
-            ToDoList(id = Id(0), name = "First list", items = setOf(), userId = userFoo.id, reminder = null),
+            ToDoList(id = 0, name = "First list", items = setOf(), userId = userFoo.id, reminder = null),
             ToDoList(
-                id = Id(0),
+                id = 0,
                 name = "Second list",
                 items = setOf(),
                 userId = userFoo.id,
                 reminder = LocalDateTime.now().plusSeconds(30)
             ),
             ToDoList(
-                id = Id(0),
+                id = 0,
                 name = "A list",
                 items = setOf(ToDoListItem("First"), ToDoListItem("Second")),
                 userId = userBar.id,
                 reminder = null
             ),
             ToDoList(
-                id = Id(0),
+                id = 0,
                 name = "Another list",
                 items = setOf(ToDoListItem("Foo"), ToDoListItem("Bar")),
                 userId = userBar.id,
@@ -56,6 +55,6 @@ class InitData(
             ),
         ).forEach(toDoListRepository::save)
 
-        println("sdfgsdfhh: ${toDoListRepository.findById(Id(1))}")
+        println("sdfgsdfhh: ${toDoListRepository.findById(1)}")
     }
 }

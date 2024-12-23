@@ -5,7 +5,7 @@ import org.springframework.data.relational.core.mapping.Table
 @Table("APPLICATION_USER")
 data class User(
     @get: org.springframework.data.annotation.Id
-    val id: Id<User>,
+    val id: Int,
     val email: String
 ) {
     init {

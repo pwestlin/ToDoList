@@ -1,7 +1,6 @@
 package nu.westlin.layered.web
 
 import nu.westlin.layered.domain.CreateUserToDoList
-import nu.westlin.layered.persistence.Id
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -25,7 +24,7 @@ class CreateUserToDoListController(
             ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(created.id.value)
+                .buildAndExpand(created.id)
                 .toUri()
         ).build()
     }
@@ -42,7 +41,7 @@ private fun CreateToDoList.toPersistence(): nu.westlin.layered.persistence.ToDoL
     nu.westlin.layered.persistence.ToDoList(
         name = this.name,
         items = this.items.toPersistence(),
-        userId = Id(this.userId),
+        userId = this.userId,
         reminder = this.reminder,
     )
 

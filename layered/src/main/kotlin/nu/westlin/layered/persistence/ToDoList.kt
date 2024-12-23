@@ -4,10 +4,10 @@ import java.time.LocalDateTime
 
 data class ToDoList(
     @get:org.springframework.data.annotation.Id
-    val id: Id<ToDoList> = Id(0),
+    val id: Int = 0,
     val name: String,
     val items: Set<ToDoListItem>,
-    val userId: Id<User>,
+    val userId: Int,
     val reminder: LocalDateTime?
 ) {
     init {

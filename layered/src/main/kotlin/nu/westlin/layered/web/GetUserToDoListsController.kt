@@ -1,7 +1,6 @@
 package nu.westlin.layered.web
 
 import nu.westlin.layered.domain.GetUserToDoLists
-import nu.westlin.layered.persistence.Id
 import nu.westlin.layered.persistence.ToDoListItem
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,7 +17,7 @@ class GetUserToDoListsController(
     // TODO pwestlin: Should be in another controller
     @GetMapping("/{id}")
     fun getList(@PathVariable id: Int): ResponseEntity<ToDoList?> {
-        val list = getUserTodoLists.list(listId = Id(id))
+        val list = getUserTodoLists.list(listId = id)
         return if (list != null) {
             ResponseEntity.ok(list.toPresentation())
         } else {
