@@ -54,7 +54,9 @@ tasks.withType<Test> {
                     val endItem = "  |"
                     val repeatLength = startItem.length + output.length + endItem.length
                     println(
-                        "\n" + ("-".repeat(repeatLength)) + "\n" + startItem + output + endItem + "\n" + ("-".repeat(repeatLength))
+                        "\n" + ("-".repeat(repeatLength)) + "\n" + startItem + output + endItem + "\n" + ("-".repeat(
+                            repeatLength
+                        ))
                     )
                 }
             }

@@ -2,7 +2,6 @@ package nu.westlin.layered.web
 
 import nu.westlin.layered.domain.CreateUserToDoList
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,7 +19,6 @@ class CreateUserToDoListController(
     fun todolists(@RequestBody toDoList: CreateToDoList): ResponseEntity<Unit> {
         val created = createUserToDoList.create(toDoList.toPersistence())
         return ResponseEntity.created(
-            // TODO pwestlin: Inject and use UriComponentsBuilder
             ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")

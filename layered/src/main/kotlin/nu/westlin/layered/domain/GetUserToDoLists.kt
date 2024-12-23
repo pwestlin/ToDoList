@@ -1,8 +1,8 @@
 package nu.westlin.layered.domain
 
+import nu.westlin.layered.persistence.ToDoList
 import nu.westlin.layered.persistence.ToDoListRepository
 import org.springframework.stereotype.Service
-import nu.westlin.layered.persistence.ToDoList
 
 @Service
 class GetUserToDoLists(private val toDoListRepository: ToDoListRepository) {
