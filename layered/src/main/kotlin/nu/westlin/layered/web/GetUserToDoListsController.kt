@@ -14,7 +14,6 @@ class GetUserToDoListsController(
     private val getUserTodoLists: GetUserToDoLists
 ) {
 
-    // TODO pwestlin: Should be in another controller
     @GetMapping("/{id}")
     fun getList(@PathVariable id: Int): ResponseEntity<ToDoList?> {
         val list = getUserTodoLists.list(listId = id)
@@ -25,7 +24,6 @@ class GetUserToDoListsController(
         }
     }
 
-    // TODO pwestlin: Should be in another controller
     @GetMapping("/user/{userId}")
     fun todolists(@PathVariable userId: Int): Set<ToDoList> = getUserTodoLists.lists(userId).toPresentation()
 }
