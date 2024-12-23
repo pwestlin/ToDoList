@@ -25,8 +25,6 @@ class InitData(
     private val toDoListRepository: ToDoListRepository
 ) : ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
-        // TODO pwestlin: Use domain service and not repo for saving
-
         val userFoo = userRepository.save(User(id = 0, email = "foo@foo.com"))
         val userBar = userRepository.save(User(id = 0, email = "bar@bar.com"))
 
