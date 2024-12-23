@@ -37,4 +37,27 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+
+    /*
+     Creates a nice looking "report" in the console
+     */
+    addTestListener(
+        object : TestListener {
+            override fun beforeTest(p0: TestDescriptor?) = Unit
+            override fun beforeSuite(p0: TestDescriptor?) = Unit
+            override fun afterTest(desc: TestDescriptor, result: TestResult) = Unit
+            override fun afterSuite(desc: TestDescriptor, result: TestResult) {
+                if (desc.parent == null) {
+                    val output =
+                        "${desc.name} results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+                    val startItem = "|  "
+                    val endItem = "  |"
+                    val repeatLength = startItem.length + output.length + endItem.length
+                    println(
+                        "\n" + ("-".repeat(repeatLength)) + "\n" + startItem + output + endItem + "\n" + ("-".repeat(repeatLength))
+                    )
+                }
+            }
+        }
+    )
 }

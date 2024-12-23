@@ -1,4 +1,4 @@
-package nu.westlin.layered.domain
+package nu.westlin.layered.web
 
 import java.time.LocalDateTime
 
