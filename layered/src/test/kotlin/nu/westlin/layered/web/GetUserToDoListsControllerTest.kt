@@ -6,6 +6,7 @@ import io.mockk.clearAllMocks
 import io.mockk.every
 import nu.westlin.layered.domain.GetUserToDoLists
 import nu.westlin.layered.persistence.ToDoList
+import nu.westlin.layered.persistence.example
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
@@ -45,7 +46,7 @@ class GetUserToDoListsControllerTest(
 
     @Test
     fun `get todo list - found`() {
-        val toDoList = ToDoList(id = 1947, name = "Lucille Velasquez", items = setOf(), userId = 7820, reminder = null)
+        val toDoList = ToDoList.example()
         every { getUserToDoLists.list(toDoList.id) } returns toDoList
 
         val result = mockMvcTester.get()

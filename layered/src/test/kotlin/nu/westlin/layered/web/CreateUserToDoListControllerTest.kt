@@ -31,7 +31,7 @@ class CreateUserToDoListControllerTest(
 
     @Test
     fun `create todo list`() {
-        val createToDoList = CreateToDoList(name = "Foo", items = setOf(), userId = 3, reminder = null)
+        val createToDoList = CreateToDoList.example()
         val createdToDoList = createToDoList.toPersistence().copy(id = 42)
         every { createUserToDoList.create(createToDoList.toPersistence()) } returns createdToDoList
 

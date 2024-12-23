@@ -10,6 +10,8 @@ data class ToDoList(
     init {
         require(name.isNotBlank()) { "name must not be blank" }
     }
+
+    companion object
 }
 
 @JvmInline
@@ -17,4 +19,6 @@ value class ToDoListItem(val name: String) {
     init {
         require(name.isNotBlank()) { "name must not be blank" }
     }
+
+    companion object
 }

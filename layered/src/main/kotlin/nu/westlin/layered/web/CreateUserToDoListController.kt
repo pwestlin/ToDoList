@@ -33,21 +33,6 @@ data class CreateToDoList(
     val items: Set<ToDoListItem>,
     val userId: Int,
     val reminder: LocalDateTime?
-)
-
-// TODO pwestlin: Move and test
-fun CreateToDoList.toPersistence(): nu.westlin.layered.persistence.ToDoList =
-    nu.westlin.layered.persistence.ToDoList(
-        name = this.name,
-        items = this.items.toPersistence(),
-        userId = this.userId,
-        reminder = this.reminder,
-    )
-
-// TODO pwestlin: Move and test
-fun Set<ToDoListItem>.toPersistence(): Set<nu.westlin.layered.persistence.ToDoListItem> =
-    this.map { persistenceToDoListItem ->
-        nu.westlin.layered.persistence.ToDoListItem(
-            name = persistenceToDoListItem.name,
-        )
-    }.toSet()
+) {
+    companion object
+}

@@ -1,7 +1,6 @@
 package nu.westlin.layered.web
 
 import nu.westlin.layered.domain.GetUserToDoLists
-import nu.westlin.layered.persistence.ToDoListItem
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -27,25 +26,3 @@ class GetUserToDoListsController(
     @GetMapping("/user/{userId}")
     fun todolists(@PathVariable userId: Int): Set<ToDoList> = getUserTodoLists.lists(userId).toPresentation()
 }
-
-@JvmName("Set_PersistenceToDoList_toPresentation")
-private fun Set<nu.westlin.layered.persistence.ToDoList>.toPresentation(): Set<ToDoList> =
-    this.map { persistenceToDoList ->
-        persistenceToDoList.toPresentation()
-    }.toSet()
-
-// TODO pwestlin: Move and test
-fun nu.westlin.layered.persistence.ToDoList.toPresentation(): ToDoList = ToDoList(
-    name = this.name,
-    items = this.items.toPresentation(),
-    reminder = this.reminder,
-)
-
-// TODO pwestlin: Move and test
-@JvmName("Set_PersistenceToDoListItem_toPresentation")
-private fun Set<ToDoListItem>.toPresentation(): Set<nu.westlin.layered.web.ToDoListItem> =
-    this.map { persistenceToDoListItem ->
-        nu.westlin.layered.web.ToDoListItem(
-            name = persistenceToDoListItem.name,
-        )
-    }.toSet()
