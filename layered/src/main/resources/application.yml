@@ -1,0 +1,29 @@
+spring:
+  application.name: layered
+  datasource:
+    url: jdbc:h2:mem:mydb
+    #url: jdbc:h2:file:./endurodb
+    driverClassName: org.h2.Driver
+    username: user
+    password: password
+  sql.init.mode: always
+  h2.console:
+    enabled: true
+    path: /h2-console
+
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint.health.probes.enabled: true
+  info.env.enabled: true
+  # This is a lab project so let's sample everything!
+  tracing:
+    enabled: true
+    sampling.probability: 1
+
+logging:
+  level:
+    nu.westlin.layered: DEBUG
+    #org.springframework.boot.web.embedded.tomcat: INFO
+    logging.level.org.springframework.jdbc: DEBUG
+    root: WARN
+
