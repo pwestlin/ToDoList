@@ -34,12 +34,14 @@ private fun Set<nu.westlin.layered.persistence.ToDoList>.toPresentation(): Set<T
         persistenceToDoList.toPresentation()
     }.toSet()
 
-private fun nu.westlin.layered.persistence.ToDoList.toPresentation(): ToDoList = ToDoList(
+// TODO pwestlin: Move and test
+fun nu.westlin.layered.persistence.ToDoList.toPresentation(): ToDoList = ToDoList(
     name = this.name,
     items = this.items.toPresentation(),
     reminder = this.reminder,
 )
 
+// TODO pwestlin: Move and test
 @JvmName("Set_PersistenceToDoListItem_toPresentation")
 private fun Set<ToDoListItem>.toPresentation(): Set<nu.westlin.layered.web.ToDoListItem> =
     this.map { persistenceToDoListItem ->
