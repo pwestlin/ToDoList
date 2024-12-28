@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.spring") version "2.1.0"
     id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
+    idea
 }
 
 group = "nu.westlin"
@@ -67,4 +68,11 @@ tasks.withType<Test> {
             }
         }
     )
+}
+
+idea {
+    module {
+        isDownloadJavadoc = true
+        isDownloadSources = true
+    }
 }
